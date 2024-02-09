@@ -1,4 +1,4 @@
-# CSharp_DotNet-Final-Project
+# C# and .NET Final Project
 My final project for the C# and .NET course at The Tech Academy was to create a Rental History page with CRUD functionality as part of a software built for a local theater. The Rental History Index page shows information on past rentals organized in a table. By clicking on "Details", users can see more information about a chosen item. Only the administrator can create new items or edit/delete an existing item. I worked on several back end but also front end stories, using Visual Studio, the .NET Framework, MVC, C#, JavaScript, jQuery, HTML, CSS and Bootstrap. I worked on a team with other students responsible for other parts of the same project.
 
 Below are descriptions of the stories I worked on, along with code snippets:
