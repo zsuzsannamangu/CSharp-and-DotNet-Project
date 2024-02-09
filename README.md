@@ -210,6 +210,82 @@ is greyed out. Here I'm using ellipses so long text is cut off instead of wrappi
 information about the damage (or any notes) by going to the item's Details page. When hovering over a row, vertical 
 ellipses appear for the dropdown menu containing Edit, Details and Delete with related icons.
 
+     Rental Histories Partial View:
+
+          @model IEnumerable<TheatreCMS3.Areas.Rent.Models.RentalHistory>
+          
+          <table class="table RentalHistory-index--table borderless" id="RentalHistory-index--tableId">
+              @foreach (var item in Model)
+              {
+              <tr class="RentalHistory-index--tr">
+                  <td id="RentalHistory-index--itemId">
+                  @Html.DisplayFor(modelItem => item.RentalHistoryId)
+                  </td>
+                  <td>
+                  @if (item.RentalDamaged == true)
+                  {
+                      <p><i class="fa-solid fa-circle-xmark" style="color:red"></i></p>
+                  }
+                  else
+                  {
+                      <p><i class="fa-solid fa-circle-check" style="color:green"></i></p>
+                  }
+                  </td>
+                  <td>
+                  <span class="badge badge-dark RentalHistory-index--rental">@Html.DisplayFor(modelItem => item.Rental)</span>
+                  </td>
+                  <td class="btn RentalHistory-index--damageNotesButton" type="button" data-toggle="collapse" data-target="#collapse_@item.RentalHistoryId">
+                  @if (item.RentalDamaged == true)
+                  {
+                      <span class="text-muted d-inline-block text-truncate" style="max-width: 600px;">Damage details</span>
+                  }
+                  else
+                  {
+                      <span class="text-dark d-inline-block text-truncate" style="max-width: 600px;">None</span>
+                  }
+                  </td>
+                  <td>
+                  <div id="collapse_@item.RentalHistoryId" class="collapse">
+                      @if (item.RentalDamaged == true)
+                      {
+                      <span class="text-muted d-inline-block text-truncate" style="max-width: 600px;">@Html.DisplayFor(modelItem => item.DamagesIncurred)</span>
+                      }
+                      else
+                      {
+                      <span class="text-dark d-inline-block text-truncate" style="max-width: 600px;">@Html.DisplayFor(modelItem => item.DamagesIncurred)</span>
+                      }
+                  </div>
+                  </td>
+                  <td>
+                  <div class="dropdown">
+                      <button class="btn btn-secondary dropdown-toggle RentalHistory-index--dropdownMenuButton" type="button" id="dropdownMenuButton_@item.RentalHistoryId" data-toggle="dropdown" aria-haspopup="true">
+                      <i class="fas fa-ellipsis-vertical"></i>
+                      </button>
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton_@item.RentalHistoryId">
+                      <span class="dropdown-item">
+                          <i class="fas fa-pen mx-2"></i> @Html.ActionLink("Edit", "Edit", new { id = item.RentalHistoryId })
+                      </span>
+                      <span class="dropdown-item">
+                          <i class="fas fa-info-circle mx-2"></i> @Html.ActionLink("Details", "Details", new { id = item.RentalHistoryId })
+                      </span>
+                      <span class="dropdown-item" style="color:red">
+                          <i class="fas fa-trash mx-2" style="color:red"></i> @Html.ActionLink("Delete", "Delete", new { id = item.RentalHistoryId })
+                      </span>
+                      </div>
+                  </div>
+                  </td>
+              </tr>
+              }
+          </table>
+            
+
+
+
+
+
+
+
+
 ## Collapse feature to show details on the Index page using Bootstrap 
 Users can open the accordion that show details of the damage or the notes on the rental.
 
