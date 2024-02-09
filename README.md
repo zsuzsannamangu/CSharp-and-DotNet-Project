@@ -158,6 +158,41 @@ Below are descriptions of the stories I worked on, along with code snippets:
                  @Html.Partial("_LoginBtnHistoryManager")
              }
          }
+
+     This code is added in the AccountController.cs file, which controlls the login page:
+     
+          [HttpPost]
+          [AllowAnonymous]
+          [ValidateAntiForgeryToken]
+          
+          public async Task<ActionResult> HistoryManagerLogin(string returnUrl)
+          {
+            var result = await SignInManager.PasswordSignInAsync("historymanagerusername1", "passwordtest6677", true, shouldLockout: false);
+            switch (result)
+            {
+                case SignInStatus.Success:
+                    return RedirectToLocal(returnUrl);
+                case SignInStatus.LockedOut:
+                    return View("Lockout");
+                case SignInStatus.RequiresVerification:
+                    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = true });
+                case SignInStatus.Failure:
+                default:
+                    ModelState.AddModelError("", "Invalid login attempt.");
+                    return View();
+            }
+          }
+
+     The AccessDenied.cshtml view:
+
+          <h2>Access Denied</h2>
+          <p>You are not authorized to visit this page!</p>
+          <div class="RentalHistory-AccessDenied-image">
+               <img src="~/Content/images/rentalhistory_unauthorized.jpg" alt="Access denied">
+          </div>
+          <div class="RentalHistory-AccessDenied-button">
+               <button class="btn btn-secondary m-3 RentalHistory-backToList-button">@Html.ActionLink("Click here to login", "../../Account/Login")</button>
+          </div>
      
 
 # Front End Stories:
