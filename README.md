@@ -17,12 +17,62 @@ Below are descriptions of the stories I worked on, along with code snippets:
     the damaged/undamaged rentals. They can also sort the list by Rental Name in ascending or descending order 
     (A - Z or Z - A). Selecting one of these options does not reload the page. I was using Ajax to contact a 
     controller method to achieve this.
+
+    Index.cshtml:
+
+    <table class="table RentalHistory-index--table">
+    <tr>
+        <td colspan="3">
+            Most recent Rental Histories
+        </td>
+        <td colspan="2" id="RentalHistory-index--SortedBy">
+            <label for="sortingCriteria">Sorted by:</label>
+            <select id="sortingSelect" class="form-control" name="sortingCriteria">
+                <option value="nosorting">No Extra Sorting...</option>
+                <option value="damagedrentals">Damaged Rentals</option>
+                <option value="undamagedrentals">Undamaged Rentals</option>
+                <option value="rentalsAtoZ">Rentals A to Z</option>
+                <option value="rentalsZtoA">Rentals Z to A</option>
+            </select>
+        </td>
+    </tr>
+    @Html.Partial("_RentalHistoriesPartial")
+    </table>
     
 ## Creating a seed method for the History Manager or admin
 
     I created an instance of the History Manager and saved it in the database so we can access the History Manager 
     for testing purposes. I created a user role using the classes UserManager and RoleManager, named it 
     "HistoryManager" and assigned it to the History Manager being seeded.
+
+    HistoryManager.cs:
+
+    public static void SeedHistoryManager(ApplicationDbContext context)
+        {
+            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
+            var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
+
+            if (!roleManager.RoleExists("HistoryManager"))
+            {
+                var role = new IdentityRole();
+                role.Name = "HistoryManager";
+                roleManager.Create(role);
+                var historymanager = new HistoryManager
+                {
+                    UserName = "historymanagerusername1",
+                    Email = "historymanagerusername1@historymanager.com",
+                    PhoneNumber = "5034445555"
+                };
+
+                var result = userManager.Create(historymanager, "passwordtest6677");
+
+                if (result.Succeeded)
+                {
+                    result = userManager.AddToRole(historymanager.Id, "HistoryManager");
+                    string newId = historymanager.Id;
+                }
+            }
+        }
 
 ## Restricting CRUD pages to admin only
 
@@ -32,20 +82,31 @@ Below are descriptions of the stories I worked on, along with code snippets:
     database, when clicked. The button is fixed to the bottom right side of the screen and only appears on the Index 
     and Details pages, additionally it is not displayed when the current user is logged in.
 
+    HistoryManager.cs:
+
     public class HistoryManagerAuthorize : AuthorizeAttribute
-        {
-            public override void OnAuthorization(AuthorizationContext filterContext)
+   { 
+       public override void OnAuthorization(AuthorizationContext filterContext)
 
-            {
-                base.OnAuthorization(filterContext);
+       {
+           base.OnAuthorization(filterContext);
 
-                if (filterContext.Result is HttpUnauthorizedResult)
-                {
-                    filterContext.Result = new RedirectResult("~/Rent/RentalHistories/AccessDenied");
-                }
-            }
-        }
+           if (filterContext.Result is HttpUnauthorizedResult)
+           {
+               filterContext.Result = new RedirectResult("~/Rent/RentalHistories/AccessDenied");
+           }
+       }
+   }
 
+     Partial View for the login button:
+     
+     @using (Html.BeginForm("HistoryManagerLogin", "Account", new { area = "", ReturnUrl = Request.Url.AbsoluteUri }, FormMethod.Post))
+     {
+     @Html.AntiForgeryToken()
+     <button class="btn btn-danger" value="Log in" type="submit" id="RentalHistory-index--HistoryManagerLoginBtn">
+        Log in as History Manager</button>
+     }
+     
 
 # Front End Stories:
 
