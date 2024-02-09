@@ -610,3 +610,61 @@ feature that shows or hides the details of the damage (or the notes).
               </tr>
               }
           </table>
+
+## Creating and styling the Donation page
+Users can use this form to enter their information and the donation amount. The input fields have placeholders. I'm using Bootstrap's Grid layout for the layout of the page.
+
+     Donate.cshtml view:
+
+          @{
+              ViewBag.Title = "Donate";
+          }
+          
+          <div class="text-center donate-index--title">
+              <h1>Consider Making a Donation</h1>
+          </div>
+          
+          <div class="row no-gutters m-3">
+              <div class="card col-sm-14 col-md-12 col-lg-8 mx-auto shadow donate-index--form">
+                  <div class="card-body">
+                      <!--Html.BeginForm needs the controller method information that can be called when user submits the form-->
+                      @using (Html.BeginForm("", "", FormMethod.Post))
+                      {
+                          <form class="container">
+                              <div class="form-group row">
+                                  <label for="Name" class="col-sm-4 col-form-label">Name*</label>
+                                  <div class="input-group col-sm-8">
+                                      <input name="Name" type="text" class="form-control mr-sm-1" placeholder="First Name" />
+                                      <input name="Name" type="text" class="form-control ml-sm-1" placeholder="Last Name" />
+                                  </div>
+                              </div>
+                              <div class="form-group row">
+                                  <label for="EmailAddress" class="col-sm-4 col-form-label">Email Address*</label>
+                                  <div class="col-sm-8">
+                                      <input name="EmailAddress" type="email" class="form-control" placeholder="Email Address" />
+                                  </div>
+                              </div>
+                              <div class="form-group row">
+                                  <label for="Address" class="col-sm-4 col-form-label">Address</label>
+                                  <div class="col-sm-8">
+                                      <input name="Address" type="text" class="form-control" placeholder="Address" />
+                                  </div>
+                              </div>
+                              <div class="form-group row">
+                                  <label for="DonationAmount" class="col-sm-4 col-form-label">Donation Amount($)*</label>
+                                  <div class="col-sm-8">
+                                      <input name="DonationAmount" type="number" class="form-control" placeholder="Donation Amount" />
+                                  </div>
+                              </div>
+                              <div class="form-group row">
+                                  <label for="Comments" class="col-sm-4 col-form-label">Donation Comments</label>
+                                  <div class="col-sm-8">
+                                      <textarea name="Comments" type="text" class="form-control" rows="4" placeholder="Place comments here..."></textarea>
+                                  </div>
+                              </div>
+                              <button type="submit" class="btn btn-light">Submit</button>
+                          </form>
+                      }
+                  </div>
+              </div>
+          </div>
