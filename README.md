@@ -85,7 +85,7 @@ Below are descriptions of the stories I worked on, along with code snippets:
     HistoryManager.cs:
 
     public class HistoryManagerAuthorize : AuthorizeAttribute
-   { 
+    { 
        public override void OnAuthorization(AuthorizationContext filterContext)
 
        {
@@ -96,7 +96,7 @@ Below are descriptions of the stories I worked on, along with code snippets:
                filterContext.Result = new RedirectResult("~/Rent/RentalHistories/AccessDenied");
            }
        }
-   }
+     }
 
      Partial View for the login button:
      
