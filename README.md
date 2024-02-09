@@ -11,7 +11,7 @@ Below are descriptions of the stories I worked on, along with code snippets:
 
 ## Adding a sorting feature on the Index page
 
-    The rentals will first appear from most recent to oldest. Users are able to filter the list by only seeing the damaged/undamaged rentals. They can also sort the list by Rental Name in ascending or descending order (A - Z or Z - A). Selecting one of these options does not reload the page. I was using Ajax to contact a controller       method to achieve this.
+    The rentals will first appear from most recent to oldest. Users are able to filter the list by only seeing the damaged/undamaged rentals. They can also sort the list by Rental Name in ascending or descending order (A - Z or Z - A). Selecting one of these options does not reload the page. I was using Ajax to contact a controller method to achieve this.
     
 ## Creating a seed method for the History Manager or admin
 
@@ -30,7 +30,7 @@ Below are descriptions of the stories I worked on, along with code snippets:
 
 ## Styling the Index page with CSS and Bootstrap, plus JavaScript
 
-    The history of rentals is shown in a tabular form. If a Rental is damaged, a red X symbol is shown next to it, if it's not, there is a green checkmark symbol. I used Font-Awesome for these icons. The name of the rental items is displayed using Bootstrap badge, so it can be distinguished. If the rental item is not damaged the          description of the damage/notes is greyed out. Here I'm using ellipses so long text is cut off instead of wrapping to a new line. Users can see more information about the damage (or any notes) by going to the item's Details page. When hovering over a row, vertical ellipses appear for the dropdown menu containing Edit, Details         and Delete with related icons.
+    The history of rentals is shown in a tabular form. If a Rental is damaged, a red X symbol is shown next to it, if it's not, there is a green checkmark symbol. I used Font-Awesome for these icons. The name of the rental items is displayed using Bootstrap badge, so it can be distinguished. If the rental item is not damaged the     description of the damage/notes is greyed out. Here I'm using ellipses so long text is cut off instead of wrapping to a new line. Users can see more information about the damage (or any notes) by going to the item's Details page. When hovering over a row, vertical ellipses appear for the dropdown menu containing Edit, Details         and Delete with related icons.
 
 ## Collapse feature to show details on the Index page using Bootstrap
 
