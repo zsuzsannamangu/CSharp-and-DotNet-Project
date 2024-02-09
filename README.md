@@ -121,32 +121,43 @@ Below are descriptions of the stories I worked on, along with code snippets:
 
     HistoryManager.cs:
 
-    public class HistoryManagerAuthorize : AuthorizeAttribute
-    { 
-       public override void OnAuthorization(AuthorizationContext filterContext)
-
-       {
-           base.OnAuthorization(filterContext);
-
-           if (filterContext.Result is HttpUnauthorizedResult)
-           {
-               filterContext.Result = new RedirectResult("~/Rent/RentalHistories/AccessDenied");
-           }
-       }
-     }
+         public class HistoryManagerAuthorize : AuthorizeAttribute
+         { 
+            public override void OnAuthorization(AuthorizationContext filterContext)
+     
+            {
+                base.OnAuthorization(filterContext);
+     
+                if (filterContext.Result is HttpUnauthorizedResult)
+                {
+                    filterContext.Result = new RedirectResult("~/Rent/RentalHistories/AccessDenied");
+                }
+            }
+          }
 
      Partial View for the login button:
      
-     @using (Html.BeginForm("HistoryManagerLogin", "Account", new { area = "", ReturnUrl = Request.Url.AbsoluteUri }, FormMethod.Post))
-     {
-     @Html.AntiForgeryToken()
-     <button class="btn btn-danger" value="Log in" type="submit" id="RentalHistory-index--HistoryManagerLoginBtn">
-        Log in as History Manager</button>
-     }
+          @using (Html.BeginForm("HistoryManagerLogin", "Account", new { area = "", ReturnUrl = Request.Url.AbsoluteUri }, FormMethod.Post))
+          {
+          @Html.AntiForgeryToken()
+          <button class="btn btn-danger" value="Log in" type="submit" id="RentalHistory-index--HistoryManagerLoginBtn">
+             Log in as History Manager</button>
+          }
 
      This line of code is added above the Create, Edit and Delete methods in the RentalHistoriesController:
 
-     [HistoryManager.HistoryManagerAuthorize(Roles = "HistoryManager")]
+          [HistoryManager.HistoryManagerAuthorize(Roles = "HistoryManager")]
+
+     _Layout.cshtml:
+     
+          @*The code below checks what controller the current view is. If it's a RentalHistories view than it will display the Easy Login button for HistoryManager*@
+         @if (HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString() == "RentalHistories")
+         {
+             if (!Request.IsAuthenticated)
+             {
+                 @Html.Partial("_LoginBtnHistoryManager")
+             }
+         }
      
 
 # Front End Stories:
