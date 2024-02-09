@@ -19,7 +19,10 @@ Below are descriptions of the stories I worked on, along with code snippets:
 
 ## Restricting CRUD pages to admin only
 
-    The Create, Edit, and Delete functionality is restricted to the History Manager. Users are redirected to an Access Denied page with a link to the login page, when they try to access one of these pages. For testing purposes, I created an easily accessible login button that automatically signs the user in as a History Manager seeded in the database, when clicked. The button is fixed to the bottom right side of the screen and only appears on the Index and Details pages, additionally it is not displayed when the current user is logged in.
+    The Create, Edit, and Delete functionality is restricted to the History Manager. Users are redirected to an Access Denied page with a link to the login page, 
+    when they try to access one of these pages. For testing purposes, I created an easily accessible login button that automatically signs the user in as a History 
+    Manager seeded in the database, when clicked. The button is fixed to the bottom right side of the screen and only appears on the Index and Details pages, 
+    additionally it is not displayed when the current user is logged in.
 
     public class HistoryManagerAuthorize : AuthorizeAttribute
         {
