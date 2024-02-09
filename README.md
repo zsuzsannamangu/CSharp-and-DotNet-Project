@@ -18,36 +18,37 @@ Below are descriptions of the stories I worked on, along with code snippets:
     (A - Z or Z - A). Selecting one of these options does not reload the page. I was using Ajax to contact a 
     controller method to achieve this.
 
-    -Index.cshtml:
+    Index.cshtml:
 
-    <table class="table RentalHistory-index--table">
-    <tr>
-        <td colspan="3">
-            Most recent Rental Histories
-        </td>
-        <td colspan="2" id="RentalHistory-index--SortedBy">
-            <label for="sortingCriteria">Sorted by:</label>
-            <select id="sortingSelect" class="form-control" name="sortingCriteria">
-                <option value="nosorting">No Extra Sorting...</option>
-                <option value="damagedrentals">Damaged Rentals</option>
-                <option value="undamagedrentals">Undamaged Rentals</option>
-                <option value="rentalsAtoZ">Rentals A to Z</option>
-                <option value="rentalsZtoA">Rentals Z to A</option>
-            </select>
-        </td>
-    </tr>
-    @Html.Partial("_RentalHistoriesPartial")
-    </table>
+         <table class="table RentalHistory-index--table">
+         <tr>
+             <td colspan="3">
+                 Most recent Rental Histories
+             </td>
+             <td colspan="2" id="RentalHistory-index--SortedBy">
+                 <label for="sortingCriteria">Sorted by:</label>
+                 <select id="sortingSelect" class="form-control" name="sortingCriteria">
+                     <option value="nosorting">No Extra Sorting...</option>
+                     <option value="damagedrentals">Damaged Rentals</option>
+                     <option value="undamagedrentals">Undamaged Rentals</option>
+                     <option value="rentalsAtoZ">Rentals A to Z</option>
+                     <option value="rentalsZtoA">Rentals Z to A</option>
+                 </select>
+             </td>
+         </tr>
+         @Html.Partial("_RentalHistoriesPartial")
+         </table>
 
-    -Controller Index method sorts the rentals by newest entry first:
+    Controller Index method sorts the rentals by newest entry first:
      
-    public ActionResult Index()
-    {
-            return View(db.RentalHistories.OrderByDescending(item => item.RentalHistoryId).ToList());
+         public ActionResult Index()
+         {
+                 return View(db.RentalHistories.OrderByDescending(item => item.RentalHistoryId).ToList());
+     
+         }
 
-    }
-
-    -Added new Controller methods:
+    Adding new Controller methods:
+    
         public ActionResult SortByDamaged()
         {
             var sortedRentals = db.RentalHistories.Where(r => r.RentalDamaged).ToList();
