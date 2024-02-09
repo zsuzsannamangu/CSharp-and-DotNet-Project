@@ -28,15 +28,7 @@ Below are descriptions of the stories I worked on, along with code snippets:
   
     If a Rental is not damaged, so the checkbox is not clicked, the "Damages Incurred" label changes to the text "Notes".
 
-## Styling the Index page with CSS and Bootstrap, plus JavaScript
+## Styling the Index page with CSS and Bootstrap, plus JavaScript: The history of rentals is shown in a tabular form. If a Rental is damaged, a red X symbol is shown next to it, if it's not, there is a green checkmark symbol. I used Font-Awesome for these icons. The name of the rental items is displayed using Bootstrap badge, so it can be distinguished. If the rental item is not damaged the description of the damage/notes is greyed out. Here I'm using ellipses so long text is cut off instead of wrapping to a new line. Users can see more information about the damage (or any notes) by going to the item's Details page. When hovering over a row, vertical ellipses appear for the dropdown menu containing Edit, Details and Delete with related icons.
 
-    The history of rentals is shown in a tabular form. If a Rental is damaged, a red X symbol is shown next to it, if it's not, there is a green checkmark symbol. I used Font-Awesome for these icons. The name of the rental items is displayed using Bootstrap badge, so it can be distinguished. If the rental item is not damaged the     description of the damage/notes is greyed out. Here I'm using ellipses so long text is cut off instead of wrapping to a new line. Users can see more information about the damage (or any notes) by going to the item's Details page. When hovering over a row, vertical ellipses appear for the dropdown menu containing Edit, Details         and Delete with related icons.
-
-## Collapse feature to show details on the Index page using Bootstrap
-
-    Users can open the accordion that show details of the damage or the notes on the rental.
-
-## Collapse feature to show details on the Index page using Bootstrap
-
-    The donation page lets users enter their information and their donation amount. The input fields are in a form, using Bootstrap's Grid Layout for the layout of the page. Every field has a placeholder.
+## Collapse feature to show details on the Index page using Bootstrap: Users can open the accordion that show details of the damage or the notes on the rental.
 
