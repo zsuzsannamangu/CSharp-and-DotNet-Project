@@ -742,72 +742,72 @@ Users can use this form to enter their information and the donation amount. The 
 
 ##CSS code: (using color variables)
 
-     .RentalHistory-create--title {
-         font-family: Broadway;
-         padding-top: 80px;
-         padding-bottom: 10px;
-     }
-     
-     .RentalHistory-create--form {
-         background-color: var(--main-color--light);
-         padding: 10px;
-         border-radius: 20px;
-         max-width: 600px;
-     }
-     
-     .RentalHistory-backToList-button {
-         color: var(--light-color);
-     }
-     
-         .RentalHistory-backToList-button :link {
-             text-decoration: none;
-         }
-     
-         .RentalHistory-backToList-button :visited {
-             text-decoration: none;
-             color: var(--light-color);
-         }
-     
-         .RentalHistory-backToList-button :hover {
-             text-decoration: none;
-         }
-     
-     #RentalHistory-create--damagesIncurredLabel {
-         display: none;
-     }
-     
-     #RentalHistory-create--notesLabel {
-         display: block;
-     }
-     
-     .RentalHistory-index--table {
-         background-color: var(--light-color);
-         margin-top: 30px;
-     }
-     
-     #RentalHistory-index--SortedBy {
-         float: right;
-     }
-     
-     .RentalHistory-index--title {
-         font-family: Broadway;
-         padding-top: 80px;
-         padding-bottom: 10px;
-     }
-     
-     .RentalHistory-index--rental {
-         font-size: 15px;
-         font-weight: bold;
-         padding: .35em;
-     }
-     
-     .RentalHistory-index--dropdownMenuButton {
-         display: none;
-     }
-     
-     #RentalHistory-index--HistoryManagerLoginBtn {
-         position: fixed;
-         right: 0;
-         bottom: 0;
-         z-index: 1;
-     }
+          .RentalHistory-create--title {
+              font-family: Broadway;
+              padding-top: 80px;
+              padding-bottom: 10px;
+          }
+          
+          .RentalHistory-create--form {
+              background-color: var(--main-color--light);
+              padding: 10px;
+              border-radius: 20px;
+              max-width: 600px;
+          }
+          
+          .RentalHistory-backToList-button {
+              color: var(--light-color);
+          }
+          
+              .RentalHistory-backToList-button :link {
+                  text-decoration: none;
+              }
+          
+              .RentalHistory-backToList-button :visited {
+                  text-decoration: none;
+                  color: var(--light-color);
+              }
+          
+              .RentalHistory-backToList-button :hover {
+                  text-decoration: none;
+              }
+          
+          #RentalHistory-create--damagesIncurredLabel {
+              display: none;
+          }
+          
+          #RentalHistory-create--notesLabel {
+              display: block;
+          }
+          
+          .RentalHistory-index--table {
+              background-color: var(--light-color);
+              margin-top: 30px;
+          }
+          
+          #RentalHistory-index--SortedBy {
+              float: right;
+          }
+          
+          .RentalHistory-index--title {
+              font-family: Broadway;
+              padding-top: 80px;
+              padding-bottom: 10px;
+          }
+          
+          .RentalHistory-index--rental {
+              font-size: 15px;
+              font-weight: bold;
+              padding: .35em;
+          }
+          
+          .RentalHistory-index--dropdownMenuButton {
+              display: none;
+          }
+          
+          #RentalHistory-index--HistoryManagerLoginBtn {
+              position: fixed;
+              right: 0;
+              bottom: 0;
+              z-index: 1;
+          }
