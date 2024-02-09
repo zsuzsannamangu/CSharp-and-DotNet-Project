@@ -35,3 +35,8 @@ Below are descriptions of the stories I worked on, along with code snippets:
 ## Collapse feature to show details on the Index page using Bootstrap
 
     Users can open the accordion that show details of the damage or the notes on the rental.
+
+## Collapse feature to show details on the Index page using Bootstrap
+
+    The donation page lets users enter their information and their donation amount. The input fields are in a form, using Bootstrap's Grid Layout for the layout of the page. Every field has a placeholder.
+
