@@ -289,6 +289,17 @@ controller method to achieve this.
         }
 
      JavaScript code:
+
+          function resetToggleCards() {
+              $('.RentalHistory-index--tr').hover(
+                  function () {
+                      $(this).find('.RentalHistory-index--dropdownMenuButton').show();
+                  },
+                  function () {
+                      $(this).find('.RentalHistory-index--dropdownMenuButton').hide();
+                  }
+              );
+          };
      
           $(document).ready(function () {
               $('#sortingSelect').change(function () {
