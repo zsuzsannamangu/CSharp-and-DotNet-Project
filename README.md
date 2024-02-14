@@ -443,7 +443,7 @@ and Details pages, additionally it is not displayed when the current user is log
 
      _Layout.cshtml:
      
-          @*The code below checks what controller the current view is. If it's a RentalHistories view than it will display the Easy Login button for HistoryManager*@
+          @*The code below checks what controller the current view is. If it's a RentalHistories view then it will display the Easy Login button for HistoryManager*@
          @if (HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString() == "RentalHistories")
          {
              if (!Request.IsAuthenticated)
