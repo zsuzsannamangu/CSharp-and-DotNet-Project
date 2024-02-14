@@ -456,6 +456,19 @@ and Details pages, additionally it is not displayed when the current user is log
           <div class="RentalHistory-AccessDenied-button">
                <button class="btn btn-secondary m-3 RentalHistory-backToList-button">@Html.ActionLink("Click here to login", "../../Account/Login")</button>
           </div>
+
+     _LoginBtnHistoryManager.cshtml partial view:
+
+          @{
+              ViewBag.Title = "_LoginBtnHistoryManager";
+          }
+          
+          @using (Html.BeginForm("HistoryManagerLogin", "Account", new { area = "", ReturnUrl = Request.Url.AbsoluteUri }, FormMethod.Post))
+          {
+              @Html.AntiForgeryToken()
+              <button class="btn btn-danger" value="Log in" type="submit" id="RentalHistory-index--HistoryManagerLoginBtn">
+                  Log in as History Manager</button>
+          }
      
 
 # Front End Stories:
