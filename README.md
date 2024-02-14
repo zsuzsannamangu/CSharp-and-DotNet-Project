@@ -345,7 +345,7 @@ I created an instance of the History Manager and saved it in the database so we 
 for testing purposes. I created a user role using the classes UserManager and RoleManager, named it 
 "HistoryManager" and assigned it to the History Manager being seeded.
 
-    HistoryManager.cs:
+    HistoryManager.cs model:
           
           using TheatreCMS3.Models;
           using Microsoft.AspNet.Identity;
