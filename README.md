@@ -11,7 +11,7 @@ As a start of the Rental History page, I created an entity model for the Rental 
 be saved to the database. First I created a model, then I created CRUD (Index, Create, Edit, Update and 
 Delete) pages for it using Entity Framework.
 
-     RentalHistoriesController.cs:
+     RentalHistoriesController.cs (Controller):
 
           using System.Data;
           using System.Data.Entity;
@@ -209,7 +209,7 @@ Delete) pages for it using Entity Framework.
               }
           }
 
-     RentalHistory.cs (the Model):
+     RentalHistory.cs (Model):
 
           namespace TheatreCMS3.Areas.Rent.Models
           {
@@ -230,7 +230,7 @@ the damaged/undamaged rentals. They can also sort the list by Rental Name in asc
 (A - Z or Z - A). Selecting one of these options does not reload the page. I was using Ajax to contact a 
 controller method to achieve this.
 
-    Index.cshtml:
+    Index.cshtml (View):
 
          <table class="table RentalHistory-index--table">
          <tr>
@@ -251,7 +251,7 @@ controller method to achieve this.
          @Html.Partial("_RentalHistoriesPartial")
          </table>
 
-    Controller Index method sorts the rentals by newest entry first:
+    I modified the Controller's Index method to sort the rentals by newest entry first:
      
          public ActionResult Index()
          {
@@ -259,7 +259,7 @@ controller method to achieve this.
      
          }
 
-    Adding new Controller methods:
+    I added new Controller methods to sort the rentals according to user's choice:
     
         public ActionResult SortByDamaged()
         {
@@ -288,15 +288,15 @@ controller method to achieve this.
             return PartialView("_RentalHistoriesPartial", sortedRentals);
         }
 
-     JavaScript code:
+     JavaScript:
 
-          function resetToggleCards() {
+          function resetToggleCards() { //Hovering over a row, this function shows the menu button next to each item
               $('.RentalHistory-index--tr').hover(
                   function () {
                       $(this).find('.RentalHistory-index--dropdownMenuButton').show();
                   },
                   function () {
-                      $(this).find('.RentalHistory-index--dropdownMenuButton').hide();
+                      $(this).find('.RentalHistory-index--dropdownMenuButton').hide(); //the button is otherwise hidden
                   }
               );
           };
