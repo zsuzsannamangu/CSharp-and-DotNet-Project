@@ -222,6 +222,8 @@ Delete) pages for it using Entity Framework.
               }
           }
 
+     The Index, Create and Edit views are added later as they were modified. The Details and Delete views were not modified after creation.
+
 
 ## Adding a sorting feature on the Index page
 
@@ -752,7 +754,21 @@ Users can use this form to enter their information and the donation amount. The 
               </div>
           </div>
 
-##CSS code:
+     CSS code:
+
+          .donate-index--title {
+              font-family: Broadway;
+              padding-top: 80px;
+              padding-bottom: 10px;
+          }
+          
+          .donate-index--form {
+              background-color: var(--main-color--light);
+              padding: 10px;
+              border-radius: 20px;
+          }
+
+##CSS code for everything but the Donation page:
 
           .RentalHistory-create--title {
               font-family: Broadway;
@@ -823,3 +839,106 @@ Users can use this form to enter their information and the donation amount. The 
               bottom: 0;
               z-index: 1;
           }
+
+##The Details and Delete pages were not modified, but I still added the code here:
+
+     Details.cshtml view:
+
+          @model TheatreCMS3.Areas.Rent.Models.RentalHistory
+          
+          @{
+              ViewBag.Title = "Details";
+              Layout = "~/Views/Shared/_Layout.cshtml";
+          }
+          
+          <h2>Details</h2>
+          
+          <div>
+              <h4>RentalHistory</h4>
+              <hr />
+              <dl class="dl-horizontal">
+                  <dt>
+                      @Html.DisplayNameFor(model => model.Rental)
+                  </dt>
+          
+                  <dd>
+                      @Html.DisplayFor(model => model.Rental)
+                  </dd>
+                  <dt>
+                      @Html.DisplayNameFor(model => model.RentalDamaged)
+                  </dt>
+          
+                  <dd>
+                      @Html.DisplayFor(model => model.RentalDamaged)
+                  </dd>
+          
+                  <dt>
+                      @Html.DisplayNameFor(model => model.DamagesIncurred)
+                  </dt>
+          
+                  <dd>
+                      @Html.DisplayFor(model => model.DamagesIncurred)
+                  </dd>
+              </dl>
+          </div>
+          <p>
+              @Html.ActionLink("Edit", "Edit", new { id = Model.RentalHistoryId }) |
+              @Html.ActionLink("Back to List", "Index")
+          </p>
+
+     Delete.cshtml view:
+
+          @model TheatreCMS3.Areas.Rent.Models.RentalHistory
+          
+          @{
+              ViewBag.Title = "Delete";
+              Layout = "~/Views/Shared/_Layout.cshtml";
+          }
+          
+          <h2>Delete</h2>
+          <p class="error">@ViewBag.ErrorMessage</p>
+          <h3>Are you sure you want to delete this?</h3>
+          
+          <div>
+              <h4>RentalHistory</h4>
+              <hr />
+              <dl class="dl-horizontal">
+          
+                  <dt>
+                      @Html.DisplayNameFor(model => model.Rental)
+                  </dt>
+          
+                  <dd>
+                      @Html.DisplayFor(model => model.Rental)
+                  </dd>
+          
+                  <dt>
+                      @Html.DisplayNameFor(model => model.RentalDamaged)
+                  </dt>
+          
+                  <dd>
+                      @Html.DisplayFor(model => model.RentalDamaged)
+                  </dd>
+          
+                  <dt>
+                      @Html.DisplayNameFor(model => model.DamagesIncurred)
+                  </dt>
+          
+                  <dd>
+                      @Html.DisplayFor(model => model.DamagesIncurred)
+                  </dd>
+          
+              </dl>
+          
+              @using (Html.BeginForm()) {
+                  @Html.AntiForgeryToken()
+          
+                  <div class="form-actions no-color">
+                      <input type="submit" value="Delete" class="btn btn-danger" /> |
+                      @Html.ActionLink("Back to List", "Index")
+                  </div>
+              }
+          </div>
+
+
+
