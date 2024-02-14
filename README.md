@@ -290,7 +290,7 @@ controller method to achieve this.
             return PartialView("_RentalHistoriesPartial", sortedRentals);
         }
 
-     JavaScript:
+     JavaScript and jQuery:
 
           function resetToggleCards() { //Hovering over a row, this function shows the menu button next to each item
               $('.RentalHistory-index--tr').hover(
@@ -613,7 +613,7 @@ text "Notes".
               </div>
           </div>
 
-     JavaScript:
+     JavaScript and jQuery:
      
           window.onload = function () {
               labelNameChangeFunction();
