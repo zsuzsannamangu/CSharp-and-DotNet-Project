@@ -799,7 +799,7 @@ Users can use this form to enter their information and the donation amount. The 
               border-radius: 20px;
           }
 
-##CSS code for everything but the Donation page:
+## CSS code for everything but the Donation page:
 
           .RentalHistory-create--title {
               font-family: Broadway;
@@ -871,7 +871,7 @@ Users can use this form to enter their information and the donation amount. The 
               z-index: 1;
           }
 
-##The Details and Delete pages were not modified, but I still added the code here:
+## The Details and Delete pages were not modified, but I still added the code here:
 
      Details.cshtml view:
 
