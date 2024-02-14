@@ -1,6 +1,8 @@
 # C# and .NET Final Project
 My final project for the C# and .NET course at The Tech Academy was to create a Rental History page with CRUD functionality as part of a software built for a local theater. The Rental History Index page shows information on past rentals organized in a table. By clicking on "Details", users can see more information about a chosen item. Only the administrator can create new items or edit/delete an existing item. I worked on several back end but also front end stories, using Visual Studio as the IDE, the .NET Framework, MVC, C#, JavaScript, jQuery, HTML, CSS and Bootstrap. I worked on a team with other students responsible for other parts of the same project. We used the Agile methodology and Scrum framework for project management, working in Azure DevOps and using Azure Boards. For communication, sprint plannings, daily standups and sprint retrospectives, we used Discord. Git was used for Version Control, which helped me gain experience in managing branches, pulling, pushing and resolving merge conflicts.
 
+Please take a look at the two gif files that show how the site works.
+
 Below are descriptions of the stories I worked on, along with code snippets:
 
 # Back End Stories:
