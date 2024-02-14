@@ -346,33 +346,63 @@ for testing purposes. I created a user role using the classes UserManager and Ro
 "HistoryManager" and assigned it to the History Manager being seeded.
 
     HistoryManager.cs:
-
-    public static void SeedHistoryManager(ApplicationDbContext context)
-        {
-            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
-            var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
-
-            if (!roleManager.RoleExists("HistoryManager"))
-            {
-                var role = new IdentityRole();
-                role.Name = "HistoryManager";
-                roleManager.Create(role);
-                var historymanager = new HistoryManager
-                {
-                    UserName = "historymanagerusername1",
-                    Email = "historymanagerusername1@historymanager.com",
-                    PhoneNumber = "5034445555"
-                };
-
-                var result = userManager.Create(historymanager, "passwordtest6677");
-
-                if (result.Succeeded)
-                {
-                    result = userManager.AddToRole(historymanager.Id, "HistoryManager");
-                    string newId = historymanager.Id;
-                }
-            }
-        }
+          
+          using TheatreCMS3.Models;
+          using Microsoft.AspNet.Identity;
+          using Microsoft.AspNet.Identity.EntityFramework;
+          using System.Web.Mvc;
+          
+          namespace TheatreCMS3.Areas.Rent.Models
+          {
+              public class HistoryManager : ApplicationUser
+              {
+                  public int? RestrictedUsers { get; set; } //the number of user that the HistoryManager has blocked from renting again
+                  public int? RentalReplacementRequests { get; set; } //the number of rentals that need to be replaced due to damage
+          
+                  public virtual RentalHistory RentalHistory { get; set; }
+          
+                  public static void SeedHistoryManager(ApplicationDbContext context)
+                  {
+                      var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
+                      var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
+          
+                      if (!roleManager.RoleExists("HistoryManager"))
+                      {
+                          var role = new IdentityRole();
+                          role.Name = "HistoryManager";
+                          roleManager.Create(role);
+                          var historymanager = new HistoryManager
+                          {
+                              UserName = "historymanagerusername1",
+                              Email = "historymanagerusername1@historymanager.com",
+                              PhoneNumber = "5034445555"
+                          };
+          
+                          var result = userManager.Create(historymanager, "passwordtest6677");
+          
+                          if (result.Succeeded)
+                          {
+                              result = userManager.AddToRole(historymanager.Id, "HistoryManager");
+                              string newId = historymanager.Id;
+                          }
+                      }
+                  }
+          
+                  public class HistoryManagerAuthorize : AuthorizeAttribute
+                  {
+                      public override void OnAuthorization(AuthorizationContext filterContext)
+          
+                      {
+                          base.OnAuthorization(filterContext);
+          
+                          if (filterContext.Result is HttpUnauthorizedResult)
+                          {
+                              filterContext.Result = new RedirectResult("~/Rent/RentalHistories/AccessDenied");
+                          }
+                      }
+                  }
+              }
+          }
 
 ## Restricting CRUD pages to admin only
 
@@ -456,21 +486,7 @@ and Details pages, additionally it is not displayed when the current user is log
           <div class="RentalHistory-AccessDenied-button">
                <button class="btn btn-secondary m-3 RentalHistory-backToList-button">@Html.ActionLink("Click here to login", "../../Account/Login")</button>
           </div>
-
-     _LoginBtnHistoryManager.cshtml partial view:
-
-          @{
-              ViewBag.Title = "_LoginBtnHistoryManager";
-          }
-          
-          @using (Html.BeginForm("HistoryManagerLogin", "Account", new { area = "", ReturnUrl = Request.Url.AbsoluteUri }, FormMethod.Post))
-          {
-              @Html.AntiForgeryToken()
-              <button class="btn btn-danger" value="Log in" type="submit" id="RentalHistory-index--HistoryManagerLoginBtn">
-                  Log in as History Manager</button>
-          }
      
-
 # Front End Stories:
 
 ## Styling the Create and Edit pages with CSS and Bootstrap, plus adding JavaScript
