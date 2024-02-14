@@ -11,7 +11,7 @@ As a start of the Rental History page, I created an entity model for the Rental 
 be saved to the database. First I created a model, then I created CRUD (Index, Create, Edit, Update and 
 Delete) pages for it using Entity Framework.
 
-     RentalHistoriesController.cs (Controller):
+     RentalHistoriesController.cs controller:
 
           using System.Data;
           using System.Data.Entity;
@@ -209,7 +209,7 @@ Delete) pages for it using Entity Framework.
               }
           }
 
-     RentalHistory.cs (Model):
+     RentalHistory.cs model:
 
           namespace TheatreCMS3.Areas.Rent.Models
           {
@@ -230,7 +230,7 @@ the damaged/undamaged rentals. They can also sort the list by Rental Name in asc
 (A - Z or Z - A). Selecting one of these options does not reload the page. I was using Ajax to contact a 
 controller method to achieve this.
 
-    Index.cshtml (View):
+    The Index.cshtml view:
 
          <table class="table RentalHistory-index--table">
          <tr>
@@ -301,7 +301,7 @@ controller method to achieve this.
               );
           };
      
-          $(document).ready(function () {
+          $(document).ready(function () { //the Controller methods are called when user chooses how to filter the list
               $('#sortingSelect').change(function () {
                   var selectedOption = $(this).val();
           
@@ -324,7 +324,7 @@ controller method to achieve this.
                   }
               });
           
-              function sendAjaxRequest(url) {
+              function sendAjaxRequest(url) { //using Ajax to contact the Controller methods
                   $.ajax({
                       url: url,
                       type: 'GET',
@@ -405,7 +405,7 @@ and Details pages, additionally it is not displayed when the current user is log
              Log in as History Manager</button>
           }
 
-     This line of code is added above the Create, Edit and Delete methods in the RentalHistoriesController:
+     This line of code is added above the Create, Edit and Delete methods in the RentalHistoriesController to restrict authorization:
 
           [HistoryManager.HistoryManagerAuthorize(Roles = "HistoryManager")]
 
@@ -458,12 +458,12 @@ and Details pages, additionally it is not displayed when the current user is log
 
 # Front End Stories:
 
-## Styling the Create and Edit pages with CSS, Bootstrap and JavaScript
+## Styling the Create and Edit pages with CSS and Bootstrap, plus adding JavaScript
   
 If a Rental is not damaged, so the checkbox is not clicked, the "Damages Incurred" label changes to the 
 text "Notes".
 
-     Create.cshtml:
+     Create.cshtml view:
 
           @model TheatreCMS3.Areas.Rent.Models.RentalHistory
           
@@ -521,7 +521,7 @@ text "Notes".
               </div>
           </div>
 
-     Edit.cshtml:
+     Edit.cshtml view:
 
           @model TheatreCMS3.Areas.Rent.Models.RentalHistory
           @Styles.Render("~/Content/Areas/Rent.css")
@@ -582,7 +582,7 @@ text "Notes".
               </div>
           </div>
 
-     JavaScript code:
+     JavaScript:
      
           window.onload = function () {
               labelNameChangeFunction();
@@ -616,7 +616,7 @@ text "Notes".
           });
 
 
-## Styling the Index page with CSS and Bootstrap, plus JavaScript 
+## Styling the Index page with CSS and Bootstrap, plus adding JavaScript 
 The history of rentals is shown in a tabular form. If a Rental is damaged, a red X symbol is shown next to it, if it's 
 not, there is a green checkmark symbol. I used Font-Awesome for these icons. The name of the rental items is displayed 
 using Bootstrap badge, so it can be distinguished. If the rental item is not damaged the description of the damage/notes 
@@ -625,7 +625,7 @@ information about the damage (or any notes) by going to the item's Details page.
 ellipses appear for the dropdown menu containing Edit, Details and Delete with related icons. There is an accordion
 feature that shows or hides the details of the damage (or the notes).
 
-     Rental Histories Partial View:
+     Rental Histories Partial view:
 
           @model IEnumerable<TheatreCMS3.Areas.Rent.Models.RentalHistory>
           
@@ -695,6 +695,7 @@ feature that shows or hides the details of the damage (or the notes).
 
 ## Creating and styling the Donation page
 Users can use this form to enter their information and the donation amount. The input fields have placeholders. I'm using Bootstrap's Grid layout for the layout of the page.
+(The Controller for this is not yet implemented, but the placeholder code is added.)
 
      Donate.cshtml view:
 
@@ -751,7 +752,7 @@ Users can use this form to enter their information and the donation amount. The 
               </div>
           </div>
 
-##CSS code: (using color variables)
+##CSS code:
 
           .RentalHistory-create--title {
               font-family: Broadway;
