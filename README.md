@@ -977,7 +977,7 @@ _Feel free to contact me at zsuzsannamangu[at]gmail.com with any questions._
 
 ## Technologies Used
 
-_C#, .NET Framework, Visual Studio_
+_C#, .NET Framework, MVC, JavaScript, jQuery, HTML, CSS, Bootstrap, and Visual Studio as IDE_
 
 ### License
 
