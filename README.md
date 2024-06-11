@@ -971,5 +971,17 @@ Users can use this form to enter their information and the donation amount. The 
               }
           </div>
 
+## Support and contact details
 
+_Feel free to contact me at zsuzsannamangu[at]gmail.com with any questions._
+
+## Technologies Used
+
+_C#, .NET Framework, Visual Studio_
+
+### License
+
+*MIT*
+
+Copyright (c) 2024 **_Zsuzsanna Mangu_**
 
